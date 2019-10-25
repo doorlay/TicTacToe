@@ -1,8 +1,8 @@
 # Project 3 - Tic-Tac-Toe Simulator
 # 
-# Name: Your Group Members Name
+# Name: Richard Rios Nic Doorlay
 # Instructor: S. Einakian 
-# Section: Your Section
+# Section: 6
 # Functions definitions comes here
 
 # def Welcome Function
@@ -37,4 +37,4 @@
 #def turnCount Function
    #your codes goes here
 
-print('test')
+)
