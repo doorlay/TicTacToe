@@ -14,15 +14,27 @@ def Welcome():
 def createBoard():
     board = []
     for i in range (9):
-        board.append(i)
+        board.append(i+1)
     return board
   
    
 def printBoard(list):
-   
+    print("",list[0],"|",list[1],"|",list[2])
+    print("------------")
+    print("",list[3],"|",list[4],"|",list[5])
+    print("------------")
+    print("",list[6],"|",list[7],"|",list[8])    
 
-#def pickLetter Function
-   #your codes goes here
+   
+def pickLetter():
+    letter = input("Choose X or O: ")
+    while True:    
+       if letter == "X" or letter == "O":
+           break
+       else:
+           letter = input("Re-enter X or O: ")
+    return letter
+
 
 #def getInput Function
    #your codes goes here

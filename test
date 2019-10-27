@@ -1,4 +1,5 @@
 import tictactoeFuncs
 
 tictactoeFuncs.Welcome()
-tictactoeFuncs.createBoard()
+tictactoeFuncs.printBoard(tictactoeFuncs.createBoard())
+tictactoeFuncs.pickLetter()
