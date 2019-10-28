@@ -5,12 +5,16 @@
 # Section: 6
 # Functions definitions comes here
 
+
+#prints the welcome screen
+#I/O
 def Welcome(): 
     print("Welcome to Tic-Tac-Toe.\nYour goal is to get 3 in a row.\nyou will either pick X or O. X will go first.")
     players = int(input("Do you wish to play against a (1)computer, or with (2)Players? "))
     return players
    
- 
+#provides the board that shows 1-9 options
+#none->none 
 def createBoard():
     board = []
     for i in range (9):
@@ -19,6 +23,7 @@ def createBoard():
   
    
 # Function needs to be redone using a for-loop according to instructions
+#prints the game board for every turn
 def printBoard(list):
     print("",list[0],"|",list[1],"|",list[2])
     print("------------")
@@ -26,7 +31,8 @@ def printBoard(list):
     print("------------")
     print("",list[6],"|",list[7],"|",list[8])    
 
-   
+# user picks either X or O 
+#I/O   
 def pickLetter():
     letter = input("Choose X or O: ")
     while True:    
@@ -36,7 +42,8 @@ def pickLetter():
            letter = input("Re-enter X or O: ")
     return letter
 
-
+#gets the user inputted location and updates the board list
+# int -> list
 def getInput(letter, board):
     while True:
         location = int(input("Where would you like to place your letter (pick in range of 1-9): ")) - 1
@@ -48,6 +55,7 @@ def getInput(letter, board):
     board.insert(location, letter)
     return board    
    
+#checks the rows for a win
 def checkRows(board):
     if board[0] == board[1] == board[2] and board[0] != "":
         return True, board[0]
@@ -58,6 +66,7 @@ def checkRows(board):
     else:
         return False, board[0]   
    
+#checks the columns for a win
 def checkCols(board):
     if board[0] == board[3] == board[6] and board[0] != "":
         return True, board[0]
@@ -68,6 +77,7 @@ def checkCols(board):
     else:
         return False, board[0]
 
+#checks the diagonals for a win
 def checkDiags(board):
     if board[0] == board[4] == board[8] and board[0] != "":
         return True, board[0]
@@ -78,6 +88,7 @@ def checkDiags(board):
   
 # Function is dependant on the fact that empty squares are represented with
 # a "" in the list. Are they? Who knows
+#checks if the board is full
 def boardFull(board):
     boardNotFull = False
     for square in board:
@@ -89,7 +100,7 @@ def boardFull(board):
     else:
         return False
 
-   
+#checks for a win and prints a message accordingly   
 def checkWin(board):
     if (checkRows(board))[0] == True:
         winner = checkRows(board)
