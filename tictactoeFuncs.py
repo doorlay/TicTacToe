@@ -37,61 +37,72 @@ def pickLetter():
     return letter
 
 
-def getInput(letter,board):
+def getInput(letter, board):
     while True:
-        location = int(input("Where would you like to place your letter (pick in range of 1-9)?"))
-        if location != "" or (location < 0 or location > 8):
+        location = int(input("Where would you like to place your letter (pick in range of 1-9): ")) - 1
+        if (location < 0 or location > 8) or board[location] != "" :
             print("Invalid move! Location is already taken. Please try again.")
         else: 
             break
-    return location
+    board.pop(location)
+    board.insert(location, letter)
+    return board    
    
 def checkRows(board):
-    if board[0] == board[1] == board[2]:
+    if board[0] == board[1] == board[2] and board[0] != "":
         return True, board[0]
-    elif board[3] == board[4] == board[5]:
+    elif board[3] == board[4] == board[5] and board[3] != "":
         return True, board[3]
-    elif board[6] == board[7] == board[8]:
+    elif board[6] == board[7] == board[8] and board[6] != "":
         return True, board[6]
-   
+    else:
+        return False, board[0]   
    
 def checkCols(board):
-    if board[0] == board[3] == board[6]:
+    if board[0] == board[3] == board[6] and board[0] != "":
         return True, board[0]
-    elif board[1] == board[4] == board[7]:
+    elif board[1] == board[4] == board[7] and board[1] != "":
         return True, board[1]
-    elif board[2] == board[5] == board[8]:
+    elif board[2] == board[5] == board[8] and board[2] != "":
         return True, board[2]
-   
+    else:
+        return False, board[0]
+
 def checkDiags(board):
-    if board[0] == board[4] == board[8]:
+    if board[0] == board[4] == board[8] and board[0] != "":
         return True, board[0]
-    elif board[2] == board[4] == board[6]:
+    elif board[2] == board[4] == board[6] and board[2] != "":
         return True, board[2]
+    else: 
+        return False, board[0]
   
 # Function is dependant on the fact that empty squares are represented with
 # a "" in the list. Are they? Who knows
 def boardFull(board):
+    boardNotFull = False
     for square in board:
         if square == "":
             boardNotFull = True
             break
     if boardNotFull != True:
         return True
+    else:
+        return False
 
    
 def checkWin(board):
-    if checkRows(board) == True:
+    if (checkRows(board))[0] == True:
         winner = checkRows(board)
         print("Congratulations, {}'s won!".format(winner[1]))
-    elif checkCols(board) == True:
+    elif (checkCols(board))[0] == True:
         winner = checkCols(board)
         print("Congratulations, {}'s won!".format(winner[1]))
-    elif checkDiags(board) == True:
+    elif (checkDiags(board))[0] == True:
         winner = checkDiags(board)
         print("Congratulations, {}'s won!".format(winner[1]))
-
-   
+    elif boardFull(board) == True:
+        print("It's a draw!")
+ 
 def turnCount(count):
     count += 1
     return count

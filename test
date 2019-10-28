@@ -1,5 +1,3 @@
 import tictactoeFuncs
 
-tictactoeFuncs.Welcome()
-tictactoeFuncs.printBoard(tictactoeFuncs.createBoard())
-tictactoeFuncs.pickLetter()
+tictactoeFuncs.checkWin(["O","X","X","X","X","O","O","O","X"])
