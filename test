@@ -1,3 +1,4 @@
 import tictactoeFuncs
 
-tictactoeFuncs.checkWin(["O","X","X","X","X","O","O","O","X"])
+tictactoeFuncs.printBoard(tictactoeFuncs.createBoard())
+tictactoeFuncs.printBoard(["X","O","O","X","X","O","O","X","O"])

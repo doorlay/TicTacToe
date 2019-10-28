@@ -18,18 +18,16 @@ def Welcome():
 def createBoard():
     board = []
     for i in range (9):
-        board.append(i+1)
-    return board
-  
+        board.append(str(i+1))
+    return board  
    
 # Function needs to be redone using a for-loop according to instructions
 #prints the game board for every turn
 def printBoard(list):
-    print("",list[0],"|",list[1],"|",list[2])
-    print("------------")
-    print("",list[3],"|",list[4],"|",list[5])
-    print("------------")
-    print("",list[6],"|",list[7],"|",list[8])    
+    for i in range (0,6,3):
+       print("",list[i],"|",list[i+1],"|",list[i+2])    
+       print("------------")
+    print("",list[6],"|",list[7],"|",list[8])
 
 # user picks either X or O 
 #I/O   
@@ -47,7 +45,7 @@ def pickLetter():
 def getInput(letter, board):
     while True:
         location = int(input("Where would you like to place your letter (pick in range of 1-9): ")) - 1
-        if (location < 0 or location > 8) or board[location] != "" :
+        if (location < 0 or location > 8) or board[location] != " " :
             print("Invalid move! Location is already taken. Please try again.")
         else: 
             break
@@ -57,42 +55,42 @@ def getInput(letter, board):
    
 #checks the rows for a win
 def checkRows(board):
-    if board[0] == board[1] == board[2] and board[0] != "":
+    if board[0] == board[1] == board[2] and board[0] != " ":
         return True, board[0]
-    elif board[3] == board[4] == board[5] and board[3] != "":
+    elif board[3] == board[4] == board[5] and board[3] != " ":
         return True, board[3]
-    elif board[6] == board[7] == board[8] and board[6] != "":
+    elif board[6] == board[7] == board[8] and board[6] != " ":
         return True, board[6]
     else:
         return False, board[0]   
    
 #checks the columns for a win
 def checkCols(board):
-    if board[0] == board[3] == board[6] and board[0] != "":
+    if board[0] == board[3] == board[6] and board[0] != " ":
         return True, board[0]
-    elif board[1] == board[4] == board[7] and board[1] != "":
+    elif board[1] == board[4] == board[7] and board[1] != " ":
         return True, board[1]
-    elif board[2] == board[5] == board[8] and board[2] != "":
+    elif board[2] == board[5] == board[8] and board[2] != " ":
         return True, board[2]
     else:
         return False, board[0]
 
 #checks the diagonals for a win
 def checkDiags(board):
-    if board[0] == board[4] == board[8] and board[0] != "":
+    if board[0] == board[4] == board[8] and board[0] != " ":
         return True, board[0]
-    elif board[2] == board[4] == board[6] and board[2] != "":
+    elif board[2] == board[4] == board[6] and board[2] != " ":
         return True, board[2]
     else: 
         return False, board[0]
   
 # Function is dependant on the fact that empty squares are represented with
-# a "" in the list. Are they? Who knows
+# a " " in the list. Are they? Who knows
 #checks if the board is full
 def boardFull(board):
     boardNotFull = False
     for square in board:
-        if square == "":
+        if square == " ":
             boardNotFull = True
             break
     if boardNotFull != True:
