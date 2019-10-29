@@ -7,6 +7,8 @@
 import unittest
 from tictactoeFuncs import *
 
+
+# Test cases for all functions from tictactoeFuncs
 class TestCases(unittest.TestCase):
    def test_checkRows(self):
        self.assertEqual(checkRows(['X','X','X'," "," "," "," ",'O','O']),(True,'X'))

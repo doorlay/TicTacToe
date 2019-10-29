@@ -6,22 +6,22 @@
 
 
 #prints the welcome screen
-#I/O
+# none -> none
 def Welcome(): 
     print("Welcome to Tic-Tac-Toe.\nYour goal is to get 3 in a row.\nyou will either pick X or O. X will go first.")
     players = int(input("Do you wish to play against a (1)computer, or with (2)Players? "))
     return players
    
-#provides the board that shows 1-9 options
-#none->none 
+# provides the board that shows 1-9 options
+# none ->none 
 def createBoard():
     board = []
     for i in range (9):
         board.append(str(i+1))
     return board  
    
-# Function needs to be redone using a for-loop according to instructions
-#prints the game board for every turn
+# prints the game board for every turn
+# list -> none
 def printBoard(list):
     for i in range (0,6,3):
        print("",list[i],"|",list[i+1],"|",list[i+2])    
@@ -29,7 +29,7 @@ def printBoard(list):
     print("",list[6],"|",list[7],"|",list[8])
 
 # user picks either X or O 
-#I/O   
+# I/O 
 def pickLetter():
     letter = input("Choose X or O: ")
     while True:    
@@ -39,8 +39,8 @@ def pickLetter():
            letter = input("Re-enter X or O: ")
     return letter
 
-#gets the user inputted location and updates the board list
-# int -> list
+# gets the user inputted location and updates the board list
+# string,list -> list
 def getInput(letter, board):
     while True:
         location = int(input("Where would you like to place your letter (pick in range of 1-9): ")) - 1
@@ -52,7 +52,8 @@ def getInput(letter, board):
     board.insert(location, letter)
     return board    
    
-#checks the rows for a win
+# checks the rows for a win
+# list -> bool, string
 def checkRows(board):
     if board[0] == board[1] == board[2] and board[0] != " ":
         return True, board[0]
@@ -63,7 +64,8 @@ def checkRows(board):
     else:
         return False, board[0]   
    
-#checks the columns for a win
+# checks the columns for a win
+# list -> bool, string
 def checkCols(board):
     if board[0] == board[3] == board[6] and board[0] != " ":
         return True, board[0]
@@ -74,7 +76,8 @@ def checkCols(board):
     else:
         return False, board[0]
 
-#checks the diagonals for a win
+# checks the diagonals for a win
+# list -> bool, string
 def checkDiags(board):
     if board[0] == board[4] == board[8] and board[0] != " ":
         return True, board[0]
@@ -84,7 +87,8 @@ def checkDiags(board):
         return False, board[0]
   
 
-#checks if the board is full
+# checks if the board is full
+# list -> bool
 def boardFull(board):
     boardNotFull = False
     for square in board:
@@ -96,7 +100,8 @@ def boardFull(board):
     else:
         return False
 
-#checks for a win and prints a message accordingly   
+# checks for a win and prints a message accordingly 
+# list -> bool  
 def checkWin(board):
     if (checkRows(board))[0] == True:
         winner = checkRows(board)
@@ -116,6 +121,8 @@ def checkWin(board):
     else:
         return False
  
+# iterates the turn count
+# none -> none
 def turnCount(count):
     count += 1
     return count
