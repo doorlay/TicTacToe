@@ -103,14 +103,20 @@ def checkWin(board):
     if (checkRows(board))[0] == True:
         winner = checkRows(board)
         print("Congratulations, {}'s won!".format(winner[1]))
+        return True
     elif (checkCols(board))[0] == True:
         winner = checkCols(board)
         print("Congratulations, {}'s won!".format(winner[1]))
+        return True
     elif (checkDiags(board))[0] == True:
         winner = checkDiags(board)
         print("Congratulations, {}'s won!".format(winner[1]))
+        return True
     elif boardFull(board) == True:
         print("It's a draw!")
+        return True
+    else:
+        return False
  
 def turnCount(count):
     count += 1
