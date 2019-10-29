@@ -3,7 +3,6 @@
 # Name: Richard Rios, Nic Doorlay
 # Instructor: S. Einakian 
 # Section: 6
-# Functions definitions comes here
 
 
 #prints the welcome screen
@@ -84,8 +83,7 @@ def checkDiags(board):
     else: 
         return False, board[0]
   
-# Function is dependant on the fact that empty squares are represented with
-# a " " in the list. Are they? Who knows
+
 #checks if the board is full
 def boardFull(board):
     boardNotFull = False
